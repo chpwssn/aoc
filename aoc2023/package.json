@@ -15,12 +15,13 @@
   "author": "Chip",
   "license": "ISC",
   "devDependencies": {
-    "@types/ramda": "^0.29.9",
     "@types/node": "^16.11.6",
+    "@types/ramda": "^0.29.9",
     "aocrunner": "^1.9.6",
     "prettier": "^2.8.0"
   },
   "dependencies": {
+    "fp-ts": "^2.16.1",
     "ramda": "^0.29.1"
   },
   "engines": {

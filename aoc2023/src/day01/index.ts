@@ -30,31 +30,34 @@ const replaceSpelledWords = (line: string): string => {
 
 }
 
-const findNumbers = pipe(
+const findPart1Numbers = map(pipe(
+  split(''),
+  map(parseInt),
+  filter((n: number) => !isNaN(n)),
+))
+
+const findPart2Numbers = map(pipe(
   replaceSpelledWords,
   split(''),
   map(parseInt),
   filter((n: number) => !isNaN(n)),
-)
+))
 
 const calibrationValue = (ns: number[]) => ns[0] * 10 + ns.slice(-1)[0]
 
 const parseInput = pipe(
   splitLines,
-  // map(splitWords),
-  // map(parseWordsFactory(identity))
-  map(findNumbers)
 )
 
 const part1 = (rawInput: string) => {
-  const input = parseInput(rawInput);
+  const input = findPart1Numbers(parseInput(rawInput));
   const calibrationValues = map(calibrationValue, input)
 
   return sum(calibrationValues).toString();
 };
 
 const part2 = (rawInput: string) => {
-  const input = parseInput(rawInput);
+  const input = findPart2Numbers(parseInput(rawInput));
   const calibrationValues = map(calibrationValue, input)
 
   return sum(calibrationValues).toString();
